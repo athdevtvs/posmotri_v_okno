@@ -28,10 +28,10 @@ showPreloader(preloaderTmp, cardsContainer);
 mainMechanics(endpoint);
 
 // осуществляется поиск ✅
-form.onsubmit = (e) => {
+form.onsubmit = e => {
   e.preventDefault();
   cardsContainer.textContent = '';
-  [...videoContainer.children].forEach((el) => {
+  [...videoContainer.children].forEach(el => {
     el.className === 'error' && el.remove();
   });
   showPreloader(preloaderTmp, videoContainer);
@@ -110,7 +110,7 @@ async function mainMechanics(endpoint) {
 // Простой промис, чтобы легче ставить паузу ✅
 
 async function delay(ms) {
-  return await new Promise((resolve) => {
+  return await new Promise(resolve => {
     return setTimeout(resolve, ms);
   });
 }
@@ -118,7 +118,7 @@ async function delay(ms) {
 // Промис, который резолвится, если видео целиком готово к проинрыванию без пауз
 
 async function waitForReadyVideo(video) {
-  return await new Promise((resolve) => {
+  return await new Promise(resolve => {
     video.oncanplaythrough = resolve;
   });
 }
@@ -142,7 +142,7 @@ function removePreloader(parent, preloaderSelector) {
 
 // Добавляет карточки в контейнер, собирая их из данных API ✅
 function appendCards({ baseUrl, dataArray, cardTmp, container }) {
-  dataArray.forEach((el) => {
+  dataArray.forEach(el => {
     const node = cardTmp.content.cloneNode(true);
     node.querySelector('a').setAttribute('id', el.id);
     node.querySelector('.content__video-card-title').textContent = el.city;
@@ -188,7 +188,7 @@ function generateFilterRequest(endpoint, city, timeArray) {
     endpoint += `filters[city][$containsi]=${city}&`;
   }
   if (timeArray) {
-    timeArray.forEach((timeslot) => {
+    timeArray.forEach(timeslot => {
       endpoint += `filters[time_of_day][$eqi]=${timeslot}&`;
     });
   }
@@ -206,16 +206,16 @@ function chooseCurrentVideo({
 }) {
   const cardsList = document.querySelectorAll(cardLinksSelector);
   if (cardsList) {
-    cardsList.forEach((item) => {
-      item.onclick = async (e) => {
+    cardsList.forEach(item => {
+      item.onclick = async e => {
         e.preventDefault();
-        cardsList.forEach((item) => {
+        cardsList.forEach(item => {
           item.classList.remove(currentLinkClassName);
         });
         item.classList.add(currentLinkClassName);
         showPreloader(preloaderTmp, videoContainer);
         const vidoObj = videoData.find(
-          (video) => String(video.id) === String(item.id)
+          video => String(video.id) === String(item.id)
         );
         setVideo({
           baseUrl,
