@@ -196,11 +196,6 @@ input[type='checkbox']:checked + span::before {
 
 .content__accent {
   color: #545050;
-  font-family: Oswald, sans-serif;
-  font-weight: 700;
-  font-size: 75px;
-  line-height: 94%; /* 70.5px */
-  text-transform: uppercase;
 }
 
 .content__list {
