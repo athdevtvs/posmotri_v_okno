@@ -154,10 +154,15 @@ ol {
   outline: 1px solid #fff;
 }
 
+/*
+  Оставила 17px так как outline не входит в расчеты, 
+  а border у меня темная и она часть внутреннего квадрата.
+*/
+
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
   content: '';
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
   background-color: #fff;
 }
 
