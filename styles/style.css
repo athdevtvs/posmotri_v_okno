@@ -156,8 +156,8 @@ ol {
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
   content: '';
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   background-color: #fff;
 }
 
